@@ -5,8 +5,14 @@ let router = new Router({
   prefix: '/users'
 })
 
-/***********文章接口***********/
+/***********用户接口***********/
 
-router.get('/getAll', user.getAllusers)          // 获取所有文章
+router.post('/signup', user.signup)           // 注册
+      .post('/signin', user.signin)           // 登录
+      .post('/followuser', user.followUser)   // 关注用户
+      .delete('/unfollowuser', user.followUser)   // 取消关注用户或移除粉丝
+      .get('/getffcount', user.getffcount)   // 
+
+
 
 export default router
