@@ -110,15 +110,10 @@ export default {
   async unfollowUser(ctx, next) {
     await ctx.config.mysql(user.unfollowUser(ctx.request.body)).then((res) => {
       console.log(res)
-      if(res.affectedRows == 1) {
+      if(res.affectedRows !== 0) {
         ctx.body = {
           code: 0,
           msg: '操作成功'
-        }
-      } else {
-        ctx.body = {
-          code: 1,
-          msg: '系统异常，稍后重试'
         }
       }
     }).catch((err)=> {

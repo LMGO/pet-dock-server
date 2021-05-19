@@ -465,7 +465,8 @@ export default {
   async likepost(ctx, next){
     try {
       //查询是否点赞
-      let isoperate = await ctx.config.mysql(post.isoperate(ctx.request.body,'like'))
+      let user_id = ctx.request.body.user_id
+      let isoperate = await ctx.config.mysql(post.isoperate(ctx.request.body,user_id,'like'))
       if(!isoperate[0].isoperate){
         //没点赞就添加
         await ctx.config.mysql(post.operate(ctx.request.body,'like'))
@@ -496,7 +497,8 @@ export default {
   async dislikepost(ctx, next){
     try {
       //查询是否点赞
-      let isoperate = await ctx.config.mysql(post.isoperate(ctx.request.body,'like'))
+      let user_id = ctx.request.body.user_id
+      let isoperate = await ctx.config.mysql(post.isoperate(ctx.request.body,user_id,'like'))
       if(isoperate[0].isoperate){
         //点赞就删除
         await ctx.config.mysql(post.deleteoperate(ctx.request.body,'like'))
@@ -527,7 +529,8 @@ export default {
   async collectionpost(ctx, next){
     try {
       //查询是否收藏
-      let isoperate = await ctx.config.mysql(post.isoperate(ctx.request.body,'collection'))
+      let user_id = ctx.request.body.user_id
+      let isoperate = await ctx.config.mysql(post.isoperate(ctx.request.body,user_id,'collection'))
       if(!isoperate[0].isoperate){
         //没收藏就添加
         await ctx.config.mysql(post.operate(ctx.request.body,'collection'))
@@ -558,7 +561,9 @@ export default {
   async uncollectionpost(ctx, next){
     try {
       //查询是否收藏
-      let isoperate = await ctx.config.mysql(post.isoperate(ctx.request.body,'collection'))
+      let user_id = ctx.request.body.user_id
+      let isoperate = await ctx.config.mysql(post.isoperate(ctx.request.body,user_id,'collection'))
+      console.log(isoperate[0].isoperate)
       if(isoperate[0].isoperate){
         //收藏就删除
         await ctx.config.mysql(post.deleteoperate(ctx.request.body,'collection'))

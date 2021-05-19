@@ -10,7 +10,7 @@ let router = new Router({
 router.post('/signup', user.signup)           // 注册
       .post('/signin', user.signin)           // 登录
       .post('/followuser', user.followUser)   // 关注用户
-      .delete('/unfollowuser', user.followUser)   // 取消关注用户或移除粉丝
+      .delete('/unfollowuser', user.unfollowUser)   // 取消关注用户或移除粉丝
       .get('/getffcount', user.getffcount)   // 
 
 

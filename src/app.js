@@ -7,6 +7,7 @@ import cors from 'koa-cors'
 import user from './routes/user'
 import topic from './routes/topic'
 import post from './routes/post'
+import art from './routes/art'
 import question from './routes/question'
 import answer from './routes/answer'
 
@@ -51,6 +52,7 @@ app.use(async (ctx, next) => {
 app.use(user.routes(), user.allowedMethods())
 app.use(topic.routes(), topic.allowedMethods())
 app.use(post.routes(), post.allowedMethods())
+app.use(art.routes(), art.allowedMethods())
 app.use(question.routes(), question.allowedMethods())
 app.use(answer.routes(), answer.allowedMethods())
 
